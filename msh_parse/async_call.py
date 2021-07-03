@@ -1,15 +1,15 @@
 import time
-
 # асинхронные вызовы в сеть (gevent, asyncio, aiohttp)
 import aiohttp
 import asyncio
 import gevent
 
 def print_lead_time(function):
-    def lead_time(*args):
+    def run_lead_time(*args):
         start_time = time.time()
-        function(*args)
-        print(f'{function.__name__}: {timel.time() - start_time}')
+        function()
+        print(f'{function.__name__}: {time.time() - start_time}')
+    return run_lead_time
 
 
 @print_lead_time
