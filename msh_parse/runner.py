@@ -1,11 +1,10 @@
 import inspect
 import sys
 
-from .msh_data import Model
+from .locals_and_globals import Model
 
-class L(Model):
-    def __init__(self, name):
-        self.name = name
+class Tires(Model):
+    pass
 
-s = L("asdf")
-print(inspect.isclass(L))
+if __name__ == "__main__":
+    print("asdf")
