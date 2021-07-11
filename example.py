@@ -1,6 +1,10 @@
 import time
 from functools import lru_cache
 
+class Cahir():
+    pass
+
+
 def lead_time(fun):
     def lead_time_run(number: int):
         start_time = time.time()
@@ -33,4 +37,6 @@ def factorial(number: int) -> int:
     return result
 
 if __name__ == "__main__":
-    factorial(1000)
+    print(type("asd"))
+    print(type(Cahir))
+    print(type(factorial))
