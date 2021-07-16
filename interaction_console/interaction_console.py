@@ -11,14 +11,25 @@ class IOThread(Thread):
         scanner_command()
 
 
+def scanner_command():
+    command = input("Command: ")
+    commands_dict[command]("command")
+
+
 class ServerThread(Thread):
     def __run__(self):
         main()
 
 
-def sixteen_ticks(*args):
-    for i in range(60):
-        activity()
+def main():
+    start_time = time.time()
+    try:
+        run_server()
+        # sixteen_ticks_per_second()
+    except Exception as e:
+        print(e)
+    finally:
+        print(f'{time.time() - start_time}:', str(TICKS))
 
 
 def sixteen_ticks_per_second(*args):
@@ -29,23 +40,13 @@ def sixteen_ticks_per_second(*args):
         time.sleep(wait_time)
 
 
+def sixteen_ticks(*args):
+    for i in range(60):
+        activity()
+
+
 def activity():
     TICKS.increment()
-
-
-def main():
-    start_time = time.time()
-    try:
-        sixteen_ticks_per_second()
-    except Exception as e:
-        print(e)
-    finally:
-        print(f'{time.time() - start_time}:', str(TICKS))
-
-
-def scanner_command():
-    command = input("Command: ")
-    commands_dict[command]("command")
 
 
 def create_threads():

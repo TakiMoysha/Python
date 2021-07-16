@@ -29,13 +29,14 @@ def create_serv_sock(serv_port):
 
 
 # def disconnect_client_conn(serv_sock, cid):
-
+#   conn = serv_sock.client()
 
 
 def accept_client_conn(serv_sock, cid):
     client_sock, client_addr = serv_sock.accept()
     print(f'Client #{cid} connected '
           f'{client_addr[0]}:{client_addr[1]}')
+    client_sock.close(cid)
     return client_sock
 
 def read_request(client_sock, delimiter=b'!'):
