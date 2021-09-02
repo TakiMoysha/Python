@@ -1,25 +1,35 @@
+from asyncio.events import get_event_loop
 import time
 # асинхронные вызовы в сеть (gevent, asyncio, aiohttp)
-import aiohttp
+from aiohttp import web
 import asyncio
+from aiohttp.client import request
 import gevent
-
-def print_lead_time(function):
-    def run_lead_time(*args):
-        start_time = time.time()
-        function()
-        print(f'{function.__name__}: {time.time() - start_time}')
-    return run_lead_time
+import requests
+import time
 
 
-@print_lead_time
-async def create_session():
-    async with aiohttp.ClientSession() as session:
-        async with session.get('http://httpbin.org/get') as resp:
-            print(resp.status)
-            print(await resp.text())
+class Network:
+    def __init__(self) -> None:
+        self.session = requests.Session()
+
+    async def get(self, url):
+        return self.session.get(url)
+
+
+async def question(net):
+    math_sum = sum([1, 2, 3, 1, 2, 1, 3, 4, 5, 7, 2, 2])
+    response = await net.get("https://question-it.com")
+
+
+async def coderoad(net):
+    response = await net.get("https://coderoad.ru/")
 
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(create_session())
+    start_time = time.time()
+    loop = get_event_loop()
+    net = Network()
+    tasks = [coderoad(net), question(net)]
+    loop.run_until_complete(asyncio.gather(*tasks))
+    print(time.time() - start_time)
