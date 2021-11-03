@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": ".",
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/*.pyo": true,
+			"**/__pycache__": true,
+			"**/build": true,
+			"**/runner.build/": true,
+			"**/runner.dist/": true,
+			"**/runner.onefile-build/": true,
+		},
+		"python.pythonPath": "C:\\Users\\Moyses\\Envs\\pyqt_env\\Scripts\\python.exe"
+	}
+}
