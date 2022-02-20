@@ -1,4 +1,15 @@
-env/
+env*
 __pycache__
 
 C/*.exe
+
+**/build
+
+*.json
+*.csv
+*.ini
+*.bat
+*.zip
+
+
+subprocess/

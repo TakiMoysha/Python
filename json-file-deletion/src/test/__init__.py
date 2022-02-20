@@ -1,1 +1,0 @@
-from .exception_func import division_by_zero
